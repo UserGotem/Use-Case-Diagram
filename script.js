@@ -113,7 +113,7 @@ function peruutaAanestys() { // peruutetaan uuden äänestyksen luominen
 
 }
 
-function uusiAanestysValmis() {
+function newVoteReady() {
     let invcount = 0;
     // tarkistetaan että otsikossa lukee jotain
     const ot = document.querySelector('#otsikko');
@@ -231,7 +231,8 @@ function listaaAanestykset(poisto, aanesta) {
             
             const cardbody = klooni.querySelector('#abody');
 
-            let kaikkiaanet = 0; /*tosta laskettu kaikki äänet*/
+            // lasketaan äänestyksen kaikki äänet
+            let kaikkiaanet = 0;
             itm.ve.forEach((va) => { kaikkiaanet += va.aanet; });
 
             if (ndx != aanesta) {
