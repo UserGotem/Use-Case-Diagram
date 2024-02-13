@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en-fi" data-bs-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name ="author" content="Oleg Mikhalev">
+    <title>Äänestys App</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,600&display=swap" rel="stylesheet">
+    <link href="styles.css" rel="stylesheet">
+</head>
+<body>
+    <main>
+        <div class="container pt-2">
+            <h1 class="border p-4">Äänestys App
+                <div class="dropdown float-end" data-bs-theme="light">
+                    <button id="adminbutton" class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" data-bs-auto-close="outside"><span id="icon" class="align-text-bottom me-2"></span></button>
+                    <div class="dropdown-menu dropdown-menu-end p-2" style="min-width: 14.5em; ">
+                        <form id="kirjaudu" class="user" onsubmit="kirjaudu_sisään(event);">
+                            <div class="mb-3">
+                                <label for="tunnus" class="form-label">Käyttäjätunnus</label>
+                                <input type="text" class="form-control" id="tunnus" placeholder="Käyttäjätunnus">
+                            </div>
+                            <div class="mb-3">
+                                <label for="salasana" class="form-label">Salasana</label>
+                                <input type="password" class="form-control" id="salasana" placeholder="Salasana">
+                                <div class="invalid-feedback">Väärä käyttäjätunnus ja/tai salasana</div>
+                            </div>
+                            <button type="submit" id="login" class="btn btn-success btn-sm float-end">Kirjaudu</button>
+                        </form>
+                        <div class="admin text-end">
+                            <p>Olet kirjautunut jo.</p>
+                            <button type="button" id="logout" class="btn btn-danger btn-sm" onclick="kirjautua_pois();">Kirjaudu ulos</button>
+                        </div>
+                    </div>
+                </div>
+                <span class="badge bg-success float-end me-1 admin">Admin</span>
+            </h1>
+            <div class="row">
+                <div class="col">
+                    <button type="button" class="btn btn-success admin mb-2 float-start" id="buttonluouusi" onclick="newCreateone();">Luo uusi äänestys</button>
+                    <button type="button" class="btn btn-danger admin mb-2 ms-2 me-4 float-start" id="buttonpoista" disabled onclick="deleteVote();">Poista äänestys</button>
+                </div>
+            </div>
+            <div class="row">
+                <h4 id="ohje" hidden class="ms-2 mb-0 align-middle"> Valitse äänestys tai paina <button type="button" class="btn btn-secondary btn-sm mb-2" onclick="peruutaPoisto();">Peruuta</button></h4>
+            </div>
+            <div id="playground" class="row">
+                <div class="col-lg-8 col-xxl-6" hidden id="divluouusi">
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="input-group">
+                                <span class="input-group-text">Aihe</span>
+                                <input type="text" class="form-control" id="otsikko">
+                                <div class="invalid-feedback">Kirjoita äänestyksen aihe!</div>
+                            </div>
+                        </div>
+                        <div class="card-body" id="vaihtoehdot">
+                            <div class="input-group mb-2">
+                                <span class="input-group-text">Vaihtoehto 1</span>
+                                <input type="text" class="form-control" name="vaihtoehtoinput">
+                                <div class="invalid-feedback">Se ei voi olla tyhjä tai sama kuin toinen vaihtoehto!</div>
+                            </div>
+                            <div class="input-group mb-2" id="viimeinenvaihtoehto">
+                                <span class="input-group-text">Vaihtoehto 2</span>
+                                <input type="text" class="form-control" name="toinenvaihtoehtoinput">
+                                <button class="btn btn-outline-secondary" type="button" onclick="addNewOption();">+</button>
+                                <div class="invalid-feedback">Se ei voi olla tyhjä tai sama kuin toinen vaihtoehto!</div>
+                            </div>
+                            <button class="btn btn-success btn-sm float-start" onclick="newVoteReady();">Valmis</button>
+                            <button class="btn btn-danger btn-sm float-end" onclick="peruutaAanestys();">Peruuta</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="divaanestykset" class="row"> 
+            </div>
+        </div>
+    </main>
+<div class="modal fade" id="oletkovarma" role="dialog" data-bs-backdrop="static" data-bs-keyboard="false">
+    <div class="modal-dialog">
+        <div class="modal-content rounded-3 shadow">
+            <div class="modal-body p-4 text-center">
+                <h4>Oletko varmaa poistaa tämä äänestyksen?</h4>
+                <h4><strong id="poistonimi">nimi</strong></h4>
+            </div>
+            <div class="modal-footer flex-nowrap p-0">
+                <button type="button" class="btn btn-lg btn-success text-decoration-none col-6 py-3 m-0 border-end rounded-0 fs-6" data-bs-dismiss="modal" id="poistonappi"><strong>Kyllä</strong></button>
+                <button type="button" class="btn btn-lg btn-danger text-decoration-none col-6 py-3 m-0 rounded-0 fs-6" data-bs-dismiss="modal">Ei</button>
+            </div>
+        </div>
+    </div>
+</div>
+<template id="uusivaihtoehto">
+    <div class="input-group mb-2" id="viimeinenvaihtoehto">
+        <span class="input-group-text" id="vaihtoehtoteksti">Vaihtoehto 2</span>
+        <input type="text" class="form-control">
+        <button class="btn btn-outline-secondary" type="button" onclick="poistaVaihtoehto(this);">Poista</button>
+        <button class="btn btn-outline-secondary" type="button" onclick="addNewOption();">Lisää seuraava</button>
+        <div class="invalid-feedback">Vaihtoehto ei voi olla tyhjä tai sama kuin toinen vaihtoehto!</div>
+    </div>
+</template>
+
+<template id="aanestys">
+    <div class="col-lg-6">
+        <div class="card mb-3">
+            <div id="aheader" class="card-header btn text-start" data-bs-toggle="collapse" data-bs-target="#cb1" onmouseover="this.classList.add('bg-primary');" onmouseout="this.classList.remove('bg-primary');">
+                Otsikko
+            </div>
+            <div class="collapse" id="cb1">
+                <div class="card-body py-1" id="abody">
+                </div>
+            </div>
+        </div>
+    </div>
+</template>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+<script src="script.js"></script>
+
+</body>
+</html>
