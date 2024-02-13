@@ -3,7 +3,7 @@
     width: 17px;
     display: inline-block;
     margin-right: 8px;
-    background-image: url("C:\Users\Käyttäjä\Desktop\#663 Ohjelmiston toteutus UseCase-kaavion pohjalta\images\person-vcard-fill.svg");
+    background-image: url("data:image/svg+xml,%3C%3Fxml version='1.0' encoding='UTF-8' standalone='no'%3F%3E%3Csvg width='16' height='16' fill='currentColor' class='bi bi-person-vcard-fill' viewBox='0 0 16 16' version='1.1' id='svg1' sodipodi:docname='person-vcard-fill.svg' inkscape:version='1.3.2 (091e20e, 2023-11-25, custom)' xmlns:inkscape='http://www.inkscape.org/namespaces/inkscape' xmlns:sodipodi='http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd' xmlns='http://www.w3.org/2000/svg' xmlns:svg='http://www.w3.org/2000/svg'%3E%3Cdefs id='defs1' /%3E%3Csodipodi:namedview id='namedview1' pagecolor='%23ffffff' bordercolor='%23000000' borderopacity='0.25' inkscape:showpageshadow='2' inkscape:pageopacity='0.0' inkscape:pagecheckerboard='0' inkscape:deskcolor='%23d1d1d1' inkscape:zoom='48.5625' inkscape:cx='10.028314' inkscape:cy='7.2175032' inkscape:window-width='1920' inkscape:window-height='991' inkscape:window-x='-9' inkscape:window-y='-9' inkscape:window-maximized='1' inkscape:current-layer='svg1' /%3E%3Cpath d='m 0,4.2574003 a 2.0003539,1.9485199 0 0 1 2.0003539,-1.94852 H 14.002477 a 2.0003539,1.9485199 0 0 1 2.000354,1.94852 V 12.05148 A 2.0003539,1.9485199 0 0 1 14.002477,14 H 2.0003539 A 2.0003539,1.9485199 0 0 1 0,12.05148 Z m 9.0015927,1.4613899 a 0.50008848,0.48712999 0 0 0 0.5000884,0.48713 h 4.0007079 a 0.50008849,0.48713 0 0 0 0,-0.97426 H 9.5016811 a 0.50008848,0.48712999 0 0 0 -0.5000884,0.48713 m 0,2.43565 a 0.50008848,0.48712999 0 0 0 0.5000884,0.4871299 h 4.0007079 a 0.50008848,0.48712999 0 0 0 0,-0.9742599 H 9.5016811 a 0.50008848,0.48712999 0 0 0 -0.5000884,0.48713 M 10.00177,10.59009 a 0.50008848,0.48712999 0 0 0 0.500088,0.48713 h 3.000531 a 0.50008849,0.48713 0 0 0 0,-0.97426 h -3.000531 a 0.50008848,0.48712999 0 0 0 -0.500088,0.48713 m -1.0001773,1.94852 c 0,-1.883244 -1.7903168,-3.4099099 -4.0007079,-3.4099099 -2.0863691,0 -3.8006724,1.3620159 -3.984705,3.0991209 a 1.000177,0.97425997 0 0 0 0.9841741,0.797919 h 6.9612317 q 0.040007,-0.238694 0.040007,-0.48713 M 7.0012387,6.2059202 a 2.0003539,1.9485199 0 1 0 -4.0007078,0 2.0003539,1.9485199 0 0 0 4.0007078,0' id='path1' style='stroke-width:0.987126;fill:%23ffffff' /%3E%3C/svg%3E%0A");
 }
 .admin {
     display: none;
@@ -15,14 +15,14 @@ h1, h4{
     display: block;
 }
 .down {
-    background-image: url("/images/chevron-down.png");
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-chevron-down' viewBox='0 0 16 16'%3E%3Cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708'/%3E%3C/svg%3E");
     background-repeat: no-repeat;
     background-position: right center;
     background-size: 18px 18px;
     background-origin: content-box;
 }
 .up {
-    background-image: url("/images/chevron-up.png");
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-chevron-up' viewBox='0 0 16 16'%3E%3Cpath fill-rule='evenodd' d='M7.646 4.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1-.708.708L8 5.707l-5.646 5.647a.5.5 0 0 1-.708-.708z'/%3E%3C/svg%3E");
     background-repeat: no-repeat;
     background-position: right center;
     background-size: 18px 18px;
