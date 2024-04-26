@@ -1,23 +1,24 @@
-# Käyttötapaukset
+# The use cases
+## User use cases
+### Logging in: The user wants to log in to the application.​
 
-## Käyttäjäkäyttötapaukset
-* Kirjautuminen sisään: Käyttäjä haluaa kirjautua sisään sovellukseen.​
+# Password confirmation: The user wants to confirm his password when logging in.​​
 
-* Salasanan vahvistaminen: Käyttäjä haluaa vahvistaa salasanansa kirjautumisen yhteydessä.​
+## Displaying the user ID: The user wants to see his own user ID.​​
 
-* Käyttäjätunnuksen näyttäminen: Käyttäjä haluaa nähdä oman käyttäjätunnuksensa.​
+### Browsing: The user wants to browse different voting topics or options.​​
 
-* Selailu: Käyttäjä haluaa selata eri äänestysaiheita tai vaihtoehtoja.​
+### Choice: The user wants to choose a voting topic or option for voting.​​
 
-* Valinta: Käyttäjä haluaa valita äänestysaiheen tai vaihtoehdon äänestämistä varten.​
+### Viewing the results: The user wants to view the voting results.​​
 
-* Tulosten katselu: Käyttäjä haluaa tarkastella äänestystuloksia.​
+### Voting: The user wants to vote for the option he has chosen.​
 
-* Äänestäminen: Käyttäjä haluaa äänestää valitsemaansa vaihtoehtoa.​
-## Ylläpitäjäkäyttötapaukset:
+# Admin use cases:
 ​
-* Uuden äänestyksen luominen: Ylläpitäjä haluaa luoda uuden äänestyksen.​
 
-* Äänestyksen poistaminen: Ylläpitäjä haluaa poistaa olemassa olevan äänestyksen.​
+Creating a new poll: The administrator wants to create a new poll.​
 
-* Tulosten tarkastelu: Ylläpitäjä haluaa tarkastella äänestysten tuloksia.​
+Deleting a poll: The administrator wants to delete an existing poll.​
+
+Viewing the results: The administrator wants to view the results of the votes.​​
